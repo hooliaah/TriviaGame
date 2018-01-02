@@ -13,15 +13,42 @@
     //Button to start over without refreshing the page
 $(document).ready(function(){
 
-var questions = {
-    question1: ["What is Winnie the Pooh’s favorite snack?", "Honey", "Peanut butter", "Salmon", "Apple pie"]
+var options = {
+    question1: {
+        question: "What is Winnie the Pooh’s favorite snack?", 
+        answers: ["Honey", "Peanut butter", "Salmon", "Apple pie"],
+        }
+        
 };
 
 $("#start-game").on("click", function(){
-    console.log("i was clicked!");
-    $("start-game").empty();
+    console.log(options.question1.question);
+    showQuestion();
+    showAnswers();
+});
+
+function showQuestion() {
+    $("#start-game").hide();
+    $("#question").text(options.question1.question);
+}
+
+function showAnswers(){
+    var correctAnswer = options.question1.answers[0];
+    console.log(correctAnswer);
+
+    var multipleOptions = options.question1.answers;
+    console.log(multipleOptions);
+
+    multipleOptions.sort(function() {
+        return 0.5 - Math.random();
+      });
+
+    for (var i = 0; i < multipleOptions.length; i++){
+        $("#answers").append("<p>" + multipleOptions[i] + "</p>");
+    }
+
+}
+
 });
 
 
-
-});
