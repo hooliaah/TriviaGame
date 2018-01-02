@@ -47,6 +47,7 @@ function showAnswers(){
     var multipleOptions = options.question1.answers;
     console.log(multipleOptions);
 
+    //need to push answers into a new array
     multipleOptions.sort(function() {
         return 0.5 - Math.random();
       });
@@ -58,6 +59,15 @@ function showAnswers(){
 }
 
 //User selects one option
+$("#answers").on("click", ".answer-option", function(){
+    console.log("answer clicked");
+    showCorrectAnswer();
+})
+
+function showCorrectAnswer(){
+    $("#answers").empty();
+    $("#correct-answer").text(options.question1.answers[0]);
+}
 //Correct answer is shown. 
     //User is told if they answered correctly or not
     //# correct or incorrect answers increases
