@@ -19,7 +19,6 @@ var options = {
 $("#start-game").on("click", function(){
     showQuestion();
     showAnswers();
-    questionTimer();
 });
 
 //First question displayed
@@ -28,32 +27,30 @@ function showQuestion() {
     $("#interval-div").append("Time Remaining: <span id='time-remaining'></span>");
     $("#time-remaining").text(time);
     $("#question").text(options.q1.question);
-}
-
-//Countdown to show how many seconds remain
-function questionTimer(){
-    setInterval(function(){
+    var startTimer = setInterval(function(){
         time--;
         $("#time-remaining").text(time);
     }, 1000);
-};
+}
 
 //Multiple choice answers displayed
 function showAnswers(){
     for (var i = 0; i < options.q1.answers.length; i ++){
-        if (options.q1.answers.length[1] != options.q1.correctAnswer){
-            $("#answers").append("<p class='answer-option' value='false'>" + options.q1.answers[i] + "</p>");
+        if (options.q1.answers[i] !== options.q1.correctAnswer){
+            $("#answers").append("<p class='answer-option' id='incorrect'>" + options.q1.answers[i] + "</p>");
+            $("#incorrect").attr("data-value", false);
         }
         else{
-            $("#answers").append("<p class='answer-option' value='true'>" + options.q1.answers[i] + "</p>");
+            $("#answers").append("<p class='answer-option' id='correct'>" + options.q1.answers[i] + "</p>");
+            $("#correct").attr("data-value", true);
         }
     }
 };
 
 //User selects one answer
 $("#answers").on("click", "p.answer-option", function(){
-    var selectedOption = $("p.answer-option").val();
-    console.log(selectedOption); //how set value in p.answer-option?
+    var selectedOption = $("p.answer-option").attr("data-value");
+    console.log(selectedOption); //how set value in p.answer-option? Still not working...
     showCorrectAnswer();
 })
 
