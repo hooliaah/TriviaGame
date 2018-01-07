@@ -4,12 +4,13 @@ var time = 30;
 var numberCorrect = 0;
 var numberIncorrect = 0;
 var numberUnanswered = 0;
-var sortedOptions = [];
+var questionCounter = 0;
 
 var options = {
-    question1: {
+    q1: {
         question: "What is Winnie the Pooh’s favorite snack?", 
-        answers: ["Honey", "Peanut butter", "Salmon", "Apple pie"],
+        answers: ["Peanut butter", "Salmon", "Honey", "Apple pie"],
+        correctAnswer: "Honey"
         }
         
 };
@@ -26,7 +27,7 @@ function showQuestion() {
     $("#start-game").hide();
     $("#interval-div").append("Time Remaining: <span id='time-remaining'></span>");
     $("#time-remaining").text(time);
-    $("#question").text(options.question1.question);
+    $("#question").text(options.q1.question);
 }
 
 //Countdown to show how many seconds remain
@@ -37,27 +38,19 @@ function questionTimer(){
     }, 1000);
 };
 
-//Multiple choice options displayed
+//Multiple choice answers displayed
 function showAnswers(){
-    var correctAnswer = options.question1.answers[0];
-    var multipleOptions = options.question1.answers;
-   
-    //Sort option into random order then push options into a new array
-   var createSortedList = multipleOptions.sort(function() {
-        return 0.5 - Math.random();
-    });
-    sortedOptions.push(createSortedList);
-    console.log(sortedOptions);
-
-    //display options in random order
-    for (var i = 0; i < multipleOptions.length; i++){
-        $("#answers").append("<p class='answer-option' value='multipleOptions[i]'>" + multipleOptions[i] + "</p>");
+    for (var i = 0; i < options.q1.answers.length; i ++){
+        if (options.q1.answers.length[1] != options.q1.correctAnswer){
+            $("#answers").append("<p class='answer-option' value='false'>" + options.q1.answers[i] + "</p>");
+        }
+        else{
+            $("#answers").append("<p class='answer-option' value='true'>" + options.q1.answers[i] + "</p>");
+        }
     }
-    console.log(options.question1.answers); // look at console log. Why is it in the sorted order?
-    console.log(correctAnswer);
-}
+};
 
-//User selects one option
+//User selects one answer
 $("#answers").on("click", "p.answer-option", function(){
     var selectedOption = $("p.answer-option").val();
     console.log(selectedOption); //how set value in p.answer-option?
@@ -69,13 +62,12 @@ $("#answers").on("click", "p.answer-option", function(){
 //Correct answer is shown.
 function showCorrectAnswer(){
     $("#answers").empty();
-    $("#correct-answer").text("The correct answer is " + options.question1.answers[0]); // why does this show the first answer in sorted array instead of original list?
+    $("#correct-answer").text("The correct answer is " + options.q1.correctAnswer);
     clearInterval(questionTimer); //how clear the timer?
     //User is told if they answered correctly or not
     //# correct or incorrect answers increases
 }
  
-
 //After certain amount of time, next question is displayed. 
     //again, countdown is shown and multiple options are shown until user makes a selection
 
