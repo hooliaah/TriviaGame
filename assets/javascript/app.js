@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-var time = 15;
+var time = 5;
 var numberCorrect = 0;
 var numberIncorrect = 0;
 var numberUnanswered = 0;
@@ -12,11 +12,45 @@ var options = {
         question: "What is Winnie the Pooh’s favorite snack?", 
         answers: ["Peanut butter", "Salmon", "Honey", "Apple pie"],
         correctAnswer: 2
-        }
-        
+        },
+    q2: {
+        question: "Fill in the blank: Babe, a little ______ goes a long way.", 
+        answers: ["Elbow grease", "Pig", "Dog", "Love"],
+        correctAnswer: 1
+        },   
+    q3: {
+        question: "Who were best friends in Charlotte’s Web?", 
+        answers: ["Charlotte and Milton", "Charlotte and Bradley", "Charlotte and Stuart", "Charlotte and Wilbur"],
+        correctAnswer: 3
+        }, 
+    q4: {
+        question: "Who created the comic strip, Garfield?", 
+        answers: ["Jim Davis", "Jon Arbuckle", "Betty White", "Joseph Conrad"],
+        correctAnswer: 0
+        }, 
+    q5: {
+        question: "What color is Clifford the big dog?", 
+        answers: ["Blue", "Orange", "Red", "Golden"],
+        correctAnswer: 2
+        }, 
+    q6: {
+        question: "What type of animal is Baloo from The Jungle Book?", 
+        answers: ["Bear", "Tiger", "Panther", "Elephant"],
+        correctAnswer: 0
+        }, 
+    q7: {
+        question: "Who is Simba’s uncle in The Lion King?", 
+        answers: ["Mufasa", "Scar", "Rafiki", "Timon"],
+        correctAnswer: 1
+        }, 
+    q8: {
+        question: "Moby Dick lived in this habitat: ", 
+        answers: ["Land", "Air", "Outer space", "Sea"],
+        correctAnswer: 3
+        },
 };
 
-//From start page, user clicks button to begin game
+// From start page, user clicks button to begin game
 $("#start-game").on("click", function(){
     showQuestion();
     showAnswers();
@@ -41,21 +75,26 @@ function showAnswers(){
     }
 };
 
-//User selects one answer
-$("#answers").on("click", "p.answer-option", function(){
+// User selects one answer
+ $("#answers").on("click", "p.answer-option", function(){
     //User is told if they answered correctly or not
-    if ($(this).text() !== options.q1.answers[options.q1.correctAnswer]) {
-        $("#correct-answer").text("You selected an incorrect answer. ");
+    if ($(this).text() === options.q1.answers[options.q1.correctAnswer]) {
+        $("#correct-answer").text("You selected the correct answer! ");
         numberCorrect += 1;
     }
     else {
-        $("#correct-answer").text("You selected the correct answer!! ");
+        $("#correct-answer").text("You selected an incorrect answer. ");
         numberIncorrect += 1;
     }
     showCorrectAnswer();
 })
 
-//If time = 0, run showCorrectAnswer.
+// If time = 0, run showCorrectAnswer.
+// if (time === 0){
+//     answerSelected();
+//     showCorrectAnswer();
+//     numberUnanswered += 1;
+// }
 
 //Correct answer is shown.
 function showCorrectAnswer(){
@@ -63,8 +102,6 @@ function showCorrectAnswer(){
     $("#correct-answer").append("<p>The correct answer is: " + options.q1.answers[options.q1.correctAnswer] + ".</p>");
     // Clear the timer
     clearInterval(questionTimer);
-
-    //# correct or incorrect answers increases
 }
  
 //After certain amount of time, next question is displayed. 
