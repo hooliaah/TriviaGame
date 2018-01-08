@@ -6,7 +6,6 @@ var numberIncorrect = 0;
 var numberUnanswered = 0;
 var questionCounter = 0;
 var questionTimer;
-
 var options = [
     {
         question: "What is Winnie the Pooh’s favorite snack?", 
@@ -77,6 +76,20 @@ function showAnswers(){
     }
 };
 
+// function checkAnswer(){
+//     if ($(userGuess).text() === options[questionCounter].answers[options[questionCounter].correctAnswer]) {
+//         $("#correct-answer").text("You selected the correct answer! ");
+//         numberCorrect += 1;
+//     }
+//     else {
+//         $("#correct-answer").text("You selected an incorrect answer. ");
+//         numberIncorrect += 1;
+//     }
+//     showCorrectAnswer();
+// }
+
+// var userGuess = $("#answers").on("click", checkAnswer());
+
 // User selects one answer
  $("#answers").on("click", "p.answer-option", function(){
     //User is told if they answered correctly or not
@@ -89,14 +102,7 @@ function showAnswers(){
         numberIncorrect += 1;
     }
     showCorrectAnswer();
-})
-
-// If time = 0, run showCorrectAnswer.
-// if (time === 0){
-//     answerSelected();
-//     showCorrectAnswer();
-//     numberUnanswered += 1;
-// }
+});
 
 //Correct answer is shown.
 function showCorrectAnswer(){
@@ -111,16 +117,17 @@ function showCorrectAnswer(){
         questionCounter += 1;
     }
     else {
-        endGame();
+        setTimeout(endGame, 2000);
     };
 }
  
-// Once the last question is answered, shows # correct, # incorrect, and # unanswered. 
+// Once the last question is answered, shows # correct, # incorrect, and # unanswered then reset is called. 
 function endGame(){
     $("#interval-div").empty();
     $("#question").empty();
     $("#answers").empty();   
     $("#correct-answer").empty();  
+    $("#correct-answer").append("<p>You made it to the end of trivia. Let's see how you did...</p>");
     $("#correct-answer").append("<p>Correct answers: " + numberCorrect + "</p>");
     $("#correct-answer").append("<p>Incorrect answers: " + numberIncorrect + "</p>");
     $("#correct-answer").append("<p>Unanswered: " + numberUnanswered + "</p>");
