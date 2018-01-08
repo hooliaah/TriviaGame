@@ -4,51 +4,51 @@ var time = 5;
 var numberCorrect = 0;
 var numberIncorrect = 0;
 var numberUnanswered = 0;
-var questionCounter = 1;
+var questionCounter = 0;
 var questionTimer;
 
-var options = {
-    q1: {
+var options = [
+    {
         question: "What is Winnie the Pooh’s favorite snack?", 
         answers: ["Peanut butter", "Salmon", "Honey", "Apple pie"],
         correctAnswer: 2
-        },
-    q2: {
+    },
+    {
         question: "Fill in the blank: Babe, a little ______ goes a long way.", 
         answers: ["Elbow grease", "Pig", "Dog", "Love"],
         correctAnswer: 1
-        },   
-    q3: {
+    },   
+    {
         question: "Who were best friends in Charlotte’s Web?", 
         answers: ["Charlotte and Milton", "Charlotte and Bradley", "Charlotte and Stuart", "Charlotte and Wilbur"],
         correctAnswer: 3
-        }, 
-    q4: {
-        question: "Who created the comic strip, Garfield?", 
-        answers: ["Jim Davis", "Jon Arbuckle", "Betty White", "Joseph Conrad"],
-        correctAnswer: 0
-        }, 
-    q5: {
-        question: "What color is Clifford the big dog?", 
-        answers: ["Blue", "Orange", "Red", "Golden"],
-        correctAnswer: 2
-        }, 
-    q6: {
-        question: "What type of animal is Baloo from The Jungle Book?", 
-        answers: ["Bear", "Tiger", "Panther", "Elephant"],
-        correctAnswer: 0
-        }, 
-    q7: {
-        question: "Who is Simba’s uncle in The Lion King?", 
-        answers: ["Mufasa", "Scar", "Rafiki", "Timon"],
-        correctAnswer: 1
-        }, 
-    q8: {
-        question: "Moby Dick lived in this habitat: ", 
-        answers: ["Land", "Air", "Outer space", "Sea"],
-        correctAnswer: 3
-        },
-};
+    } 
+    // {
+    //     question: "Who created the comic strip, Garfield?", 
+    //     answers: ["Jim Davis", "Jon Arbuckle", "Betty White", "Joseph Conrad"],
+    //     correctAnswer: 0
+    // }, 
+    // {
+    //     question: "What color is Clifford the big dog?", 
+    //     answers: ["Blue", "Orange", "Red", "Golden"],
+    //     correctAnswer: 2
+    // }, 
+    // {
+    //     question: "What type of animal is Baloo from The Jungle Book?", 
+    //     answers: ["Bear", "Tiger", "Panther", "Elephant"],
+    //     correctAnswer: 0
+    // }, 
+    // {
+    //     question: "Who is Simba’s uncle in The Lion King?", 
+    //     answers: ["Mufasa", "Scar", "Rafiki", "Timon"],
+    //     correctAnswer: 1
+    // }, 
+    // {
+    //     question: "Moby Dick lived in this habitat: ", 
+    //     answers: ["Land", "Air", "Outer space", "Sea"],
+    //     correctAnswer: 3
+    // }
+    ];
 
 // From start page, user clicks button to begin game
 $("#start-game").on("click", function(){
@@ -63,7 +63,7 @@ function showQuestion() {
     $("#correct-answer").text("");
     $("#interval-div").html("Time Remaining: <span id='time-remaining'></span>");
     $("#time-remaining").text(time);
-    $("#question").text(options.q1.question);
+    $("#question").text(options[questionCounter].question);
     questionTimer = setInterval(function(){
         time--;
         $("#time-remaining").text(time);
@@ -72,15 +72,15 @@ function showQuestion() {
 
 // Display multiple choice answers
 function showAnswers(){
-    for (var i = 0; i < options.q1.answers.length; i ++){
-        $("#answers").append("<p class='answer-option'>" + options.q1.answers[i] + "</p>");
+    for (var i = 0; i < options[questionCounter].answers.length; i ++){
+        $("#answers").append("<p class='answer-option'>" + options[questionCounter].answers[i] + "</p>");
     }
 };
 
 // User selects one answer
  $("#answers").on("click", "p.answer-option", function(){
     //User is told if they answered correctly or not
-    if ($(this).text() === options.q1.answers[options.q1.correctAnswer]) {
+    if ($(this).text() === options[questionCounter].answers[options[questionCounter].correctAnswer]) {
         $("#correct-answer").text("You selected the correct answer! ");
         numberCorrect += 1;
     }
@@ -101,18 +101,41 @@ function showAnswers(){
 //Correct answer is shown.
 function showCorrectAnswer(){
     $("#answers").empty();
-    $("#correct-answer").append("<p>The correct answer is: " + options.q1.answers[options.q1.correctAnswer] + ".</p>");
+    $("#correct-answer").append("<p>The correct answer is: " + options[questionCounter].answers[options[questionCounter].correctAnswer] + ".</p>");
     // Clear the timer
     clearInterval(questionTimer);
-    setTimeout(showQuestion, 2000);
-    setTimeout(showAnswers, 2000);
+    // Display next question automatically without user input
+    if (questionCounter < options.length - 1){
+        setTimeout(showQuestion, 2000);
+        setTimeout(showAnswers, 2000);
+        questionCounter += 1;
+    }
+    else {
+        endGame();
+    };
 }
  
-//After certain amount of time, next question is displayed. 
-    //again, countdown is shown and multiple options are shown until user makes a selection
+// Once the last question is answered, shows # correct, # incorrect, and # unanswered. 
+function endGame(){
+    $("#interval-div").empty();
+    $("#question").empty();
+    $("#answers").empty();   
+    $("#correct-answer").empty();  
+    $("#correct-answer").append("<p>Correct answers: " + numberCorrect + "</p>");
+    $("#correct-answer").append("<p>Incorrect answers: " + numberIncorrect + "</p>");
+    $("#correct-answer").append("<p>Unanswered: " + numberUnanswered + "</p>");
+    reset();
+}
 
-    //Once the last question is answered, shows # correct, # incorrect, and # unanswered. 
-    //Button to start over without refreshing the page
+function reset(){
+    // Button to start over without refreshing the page
+    $("#start-game").show();
+    // Reset variables
+    numberCorrect = 0;
+    numberIncorrect = 0;
+    numberUnanswered = 0;
+    questionCounter = 0;
+};
 
 });
 
