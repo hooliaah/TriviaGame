@@ -14,39 +14,39 @@ var options = [
     },
     {
         question: "Fill in the blank: Babe, a little ______ goes a long way.", 
-        answers: ["Elbow grease", "Pig", "Dog", "Love"],
+        answers: ["Bit", "Pig", "Dog", "Love"],
         correctAnswer: 1
     },   
     {
         question: "Who were best friends in Charlotte’s Web?", 
         answers: ["Charlotte and Milton", "Charlotte and Bradley", "Charlotte and Stuart", "Charlotte and Wilbur"],
         correctAnswer: 3
-    } 
-    // {
-    //     question: "Who created the comic strip, Garfield?", 
-    //     answers: ["Jim Davis", "Jon Arbuckle", "Betty White", "Joseph Conrad"],
-    //     correctAnswer: 0
-    // }, 
-    // {
-    //     question: "What color is Clifford the big dog?", 
-    //     answers: ["Blue", "Orange", "Red", "Golden"],
-    //     correctAnswer: 2
-    // }, 
-    // {
-    //     question: "What type of animal is Baloo from The Jungle Book?", 
-    //     answers: ["Bear", "Tiger", "Panther", "Elephant"],
-    //     correctAnswer: 0
-    // }, 
-    // {
-    //     question: "Who is Simba’s uncle in The Lion King?", 
-    //     answers: ["Mufasa", "Scar", "Rafiki", "Timon"],
-    //     correctAnswer: 1
-    // }, 
-    // {
-    //     question: "Moby Dick lived in this habitat: ", 
-    //     answers: ["Land", "Air", "Outer space", "Sea"],
-    //     correctAnswer: 3
-    // }
+    }, 
+    {
+        question: "Who created the comic strip, Garfield?", 
+        answers: ["Jim Davis", "Jon Arbuckle", "Betty White", "Joseph Conrad"],
+        correctAnswer: 0
+    }, 
+    {
+        question: "What color is Clifford the big dog?", 
+        answers: ["Blue", "Orange", "Red", "Golden"],
+        correctAnswer: 2
+    }, 
+    {
+        question: "What type of animal is Baloo from The Jungle Book?", 
+        answers: ["Bear", "Tiger", "Panther", "Elephant"],
+        correctAnswer: 0
+    }, 
+    {
+        question: "Who is Simba’s uncle in The Lion King?", 
+        answers: ["Mufasa", "Scar", "Rafiki", "Timon"],
+        correctAnswer: 1
+    }, 
+    {
+        question: "Moby Dick lived in this habitat: ", 
+        answers: ["Land", "Air", "Outer space", "Sea"],
+        correctAnswer: 3
+    }
     ];
 
 // From start page, user clicks button to begin game

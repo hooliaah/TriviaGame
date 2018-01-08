@@ -42,3 +42,7 @@ a {
 #correct-answer {
     color: #2e2e2e;
 }
+
+#answers {
+    padding-top: 20px;
+}
