@@ -1,7 +1,7 @@
 # TriviaGame
 https://hooliaah.github.io/TriviaGame/
 
-<em>Author Info</em>
+<strong>Author Info</strong>
 Julie Groth
 
 Technologies Used
