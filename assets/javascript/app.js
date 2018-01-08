@@ -58,8 +58,10 @@ $("#start-game").on("click", function(){
 
 // Display question
 function showQuestion() {
+    time = 5;
     $("#start-game").hide();
-    $("#interval-div").append("Time Remaining: <span id='time-remaining'></span>");
+    $("#correct-answer").text("");
+    $("#interval-div").html("Time Remaining: <span id='time-remaining'></span>");
     $("#time-remaining").text(time);
     $("#question").text(options.q1.question);
     questionTimer = setInterval(function(){
@@ -102,6 +104,8 @@ function showCorrectAnswer(){
     $("#correct-answer").append("<p>The correct answer is: " + options.q1.answers[options.q1.correctAnswer] + ".</p>");
     // Clear the timer
     clearInterval(questionTimer);
+    setTimeout(showQuestion, 2000);
+    setTimeout(showAnswers, 2000);
 }
  
 //After certain amount of time, next question is displayed. 
