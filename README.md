@@ -1,18 +1,20 @@
 # TriviaGame
 https://hooliaah.github.io/TriviaGame/
 
-<strong>Author Info</strong>
+# Author Info
 Julie Groth
 
-Technologies Used
+# Technologies Used
 HTML5
 CSS3
 JavaScript
 jQuery
 Bootstrap
 
-Course of Development
+# Course of Development
 
-Deployment 
 
-Future Development Plans
+# Deployment 
+GitHub Pages
+
+# Future Development Plans
