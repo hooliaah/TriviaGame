@@ -8,6 +8,7 @@ body {
 
 h1 {
     padding: 3rem;
+    color: #2e2e2e;
 }
 
 .container {
@@ -23,10 +24,21 @@ h1 {
     padding-bottom: 3rem;
 }
 
+.btn {
+    background-color: #482511;
+    color: white;
+}
 a {
     position: fixed;
     bottom: 10px;
     right: 10px;
     color: #747474;
     font-size: .75rem;
+}
+
+#interval-div, 
+#question,
+#answers,
+#correct-answer {
+    color: #2e2e2e;
 }

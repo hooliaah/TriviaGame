@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-var time = 5;
+var time;
 var numberCorrect = 0;
 var numberIncorrect = 0;
 var numberUnanswered = 0;
@@ -57,16 +57,20 @@ $("#start-game").on("click", function(){
 
 // Display question
 function showQuestion() {
-    time = 5;
+    time = 15;
     $("#start-game").hide();
     $("#correct-answer").text("");
     $("#interval-div").html("Time Remaining: <span id='time-remaining'></span>");
     $("#time-remaining").text(time);
     $("#question").text(options[questionCounter].question);
     questionTimer = setInterval(function(){
-        time--;
+        if (--time === 0){
+            numberUnanswered += 1;
+            showCorrectAnswer();
+        }
         $("#time-remaining").text(time);
     }, 1000);
+
 }
 
 // Display multiple choice answers
@@ -75,20 +79,6 @@ function showAnswers(){
         $("#answers").append("<p class='answer-option'>" + options[questionCounter].answers[i] + "</p>");
     }
 };
-
-// function checkAnswer(){
-//     if ($(userGuess).text() === options[questionCounter].answers[options[questionCounter].correctAnswer]) {
-//         $("#correct-answer").text("You selected the correct answer! ");
-//         numberCorrect += 1;
-//     }
-//     else {
-//         $("#correct-answer").text("You selected an incorrect answer. ");
-//         numberIncorrect += 1;
-//     }
-//     showCorrectAnswer();
-// }
-
-// var userGuess = $("#answers").on("click", checkAnswer());
 
 // User selects one answer
  $("#answers").on("click", "p.answer-option", function(){
