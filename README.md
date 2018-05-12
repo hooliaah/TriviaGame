@@ -1,4 +1,5 @@
 # TriviaGame
+Test your literary animal knowledge with this trivia game! </br>
 https://hooliaah.github.io/TriviaGame/
 
 # Author Info
