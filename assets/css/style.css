@@ -42,10 +42,24 @@ a, footer {
     color: #2e2e2e;
 }
 
+#interval-div, 
+#answers,
+#correct-answer {
+    font-size: 1rem;
+}
+
+#question {
+    font-size: 1.5rem;
+}
+
 #correct-answer {
     font-weight: bold;
 }
 
 #answers {
     padding-top: 20px;
+}
+
+#interval-div {
+    padding-bottom: 2rem;
 }
