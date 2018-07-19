@@ -66,8 +66,10 @@ $(document).ready(function () {
         $("#start-game").hide();
         // clear correct answer div
         $("#correct-answer").text("");
-        // show time remaining to answer question
-        $("#interval-div").html("Time Remaining: <span id='time-remaining'></span>");
+        // show question number and time remaining to answer question
+        $("#interval-div").html("Question <span id='question-number'></span>/8");
+        $("#question-number").text(questionCounter + 1);
+        $("#interval-div").append("<br>Time Remaining: <span id='time-remaining'></span>");
         $("#time-remaining").text(time);
         // show question text
         $("#question").text(options[questionCounter].question);
@@ -112,19 +114,21 @@ $(document).ready(function () {
     function showCorrectAnswer() {
         // empty answers div
         $("#answers").empty();
+        // text to let user know the next question will be shown soon
+        $("#interval-div").html("Next question will begin shortly");
         // display the correct answer
         $("#correct-answer").append("<p>The correct answer is: " + options[questionCounter].answers[options[questionCounter].correctAnswer] + ".</p>");
         // clear the timer
         clearInterval(questionTimer);
         // if question counter is less than # options, display next question automatically without user input
         if (questionCounter < options.length - 1) {
-            setTimeout(showQuestion, 2000);
-            setTimeout(showAnswers, 2000);
+            setTimeout(showQuestion, 3000);
+            setTimeout(showAnswers, 3000);
             questionCounter += 1;
         }
         // if question counter is not less than # options, call endGame function
         else {
-            setTimeout(endGame, 2000);
+            setTimeout(endGame, 3000);
         };
     }
 
