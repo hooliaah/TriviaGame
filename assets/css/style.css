@@ -42,6 +42,10 @@ a, footer {
     color: #2e2e2e;
 }
 
+#correct-answer {
+    font-weight: bold;
+}
+
 #answers {
     padding-top: 20px;
 }

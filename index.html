@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Trivia Game</title>
+    <!-- Link to favicon -->
     <link rel="icon" href="assets/images/book.png" type="image/gif">
+    <!-- Link to Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <!-- Link to external custom stylesheet -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
 
+    <!-- Title container -->
     <div class="container rounded-top" id="top-container">
         <div class="row">
                 <div class="col-sm-2">
@@ -23,11 +27,17 @@
         </div>
     </div>
 
+    <!-- Main body container -->
     <div class="container rounded-bottom" id="bottom-container">
+        <!-- Empty div to show timer -->
         <div id="interval-div"></div>
+        <!-- Empty div for question text -->
         <div id="question"></div>
+        <!-- Empty div for answer text -->
         <div id="answers"></div>
+        <!-- Empty div for correct answer text -->
         <div id="correct-answer"></div>
+        <!-- Start game button container -->
         <div class="row">
             <div class="col-sm-12">
                 <button type="button" class="btn btn-lg" id="start-game">Click here to start the game</button>
@@ -35,12 +45,15 @@
         </div>
     </div>
     
+    <!-- Footer -->
     <footer>
         <p>&#169; <span id="year"></span> Julie Groth</p>
         <a href="https://www.freepik.com/free-vector/collection-of-hipster-cats_1529263.htm" target="_blank">Click here for a link to the background image</a>
     </footer>
 
+    <!-- Link to jQuery -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+   <!-- Link to external JS file -->
     <script src="assets/javascript/app.js"></script>
 
 </body>
