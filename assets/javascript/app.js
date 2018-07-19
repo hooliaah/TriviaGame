@@ -136,4 +136,7 @@ function reset(){
 
 });
 
+// =================================================================
 
+  // Add year to footer
+  $("#year").text(new Date().getFullYear());
