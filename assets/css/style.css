@@ -27,7 +27,7 @@ h1 {
     background-color: #482511;
     color: white;
 }
-a {
+a, footer {
     position: fixed;
     bottom: 10px;
     right: 10px;
